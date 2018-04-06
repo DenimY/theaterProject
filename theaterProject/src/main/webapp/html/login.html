@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+   margin:0;
+   padding:0;
+   list-style:none;
+   text-decoration:none;
+   color:#9ab1bc;
+}
+body{
+   background-color:#000;
+}
+
+h1,
+ul{
+   text-align:center;
+}
+ul li{
+   display:inline-block;
+   margin-right:70px;
+}
+
+ul li:last-child {
+margin-right:0;
+}
+nav {
+   margin-top:20px;
+   padding: 10px 0;
+   border-top: 1px solid #969696;
+   border-bottom: 1px solid #969696;
+}
+
+content {
+   background-color:white;
+   float:left;
+   width:100%;
+   height:750px;
+}
+footer{
+      text-align:center;
+      padding:10px;
+   }
+p { }margin-top:20px;
+text-align:center;
+</style>
+
+</head>
+<body>
+<header>
+   <a href="login.html" id="login"><h3>로그인</a>
+   <a href="register.html" id="register">회원가입</a>
+   <center><a href="home.html" id="login">홈화면</h3></a></center>
+   <h1>영화관 예매 사이트</h1>
+</header>
+
+
+<nav>
+   <ul>
+  <li><a href="notshowing.html">개봉예정영화</a></li>
+   <li><a href="showing.html">개봉중인영화</a></li>
+   <li><a href="#">게시판(Q&A)</a></li>
+   <li><a href="#">무제</a></li>
+</nav>
+
+
+<br>
+<content>
+<center>
+
+<h1>로그인을 해주세요~</h1><br>
+<form action="login.do" method="post">
+아이디 <input type="text" size="30" name="id" /><br />
+비밀번호 <input type="text" size="30" name="pw" /><br /><br>
+<input type="submit" value="로그인" />
+<a href="Join.jsp"></a>
+</form>
+</center>
+</content>
+
+
+<footer>
+   <h3> copyright (c) 2018 미래능력개발교육원</h3>
+</footer>
+</body>
+</html>

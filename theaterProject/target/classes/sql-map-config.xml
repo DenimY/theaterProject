@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="BoardVO" type="theater.member.board.model.board.BoardVO" />
+		<typeAlias alias="UsersVO" type="theater.member.board.model.users.UsersVO" />
+		<typeAlias alias="CommentVO" type="theater.member.board.model.board.CommentVO" />
+		<typeAlias alias="MovieVO" type="theater.member.board.model.ticket.MovieVO" />
+		<typeAlias alias="UploadFileVO" type="theater.member.board.model.ticket.UploadFileVO"/>
+		<typeAlias alias="TheaterVO" type="theater.member.board.model.ticket.TheaterVO"/>
+		<typeAlias alias="SeatVO" type="theater.member.board.model.ticket.SeatVO"/>
+		<typeAlias alias="AuditoriumVO" type="theater.member.board.model.ticket.AuditoriumVO"/>
+		<typeAlias alias="ScheduleVO" type="theater.member.board.model.ticket.ScheduleVO"/>
+		<typeAlias alias="TicketVO" type="theater.member.board.model.ticket.TicketVO"/>
+		
+		<typeAlias alias="audienceResult" type="theater.member.board.model.ticket.MovieVO" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappings/user-mapping.xml"/>
+		<mapper resource="mappings/facilities-mapping.xml"/>
+		<mapper resource="mappings/movie-mapping.xml"/>
+		<mapper resource="mappings/board-mapping.xml"/>
+		<mapper resource="mappings/ticketing-mapping.xml"/>
+	</mappers>
+
+</configuration>

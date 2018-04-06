@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="facilitiesDAO">
+	<resultMap type="TheaterVO" id ="theaterResult">
+		<id property="id" column = "ID"/>
+		<result property="name" column="NAME"/>
+		<result property="address" column ="ADDRESS"/>
+		<result property="comeWay" column = "COMEWAY"/>
+	</resultMap>
+	<resultMap type="AuditoriumVO" id="adtResult">
+		<id property="id" column="ID"/>
+		<result property="theaterId" column="THEATER_ID"/>
+		<result property="type" column="TYPE"/>
+	</resultMap>
+	<resultMap type="SeatVO" id="seatResult">
+		<id property="id" column="ID"/>
+		<result property="name" column="NAME"/>
+		<result property="auditoriumId" column="AUDITORIUM_ID"/>
+		<result property="locX" column="LOC_X"/>
+		<result property="locY" column="LOC_Y"/>
+	</resultMap>
+	
+	<select id="getSeatID" resultType="java.lang.Integer">
+		SELECT SEAT_NUM.NEXTVAL FROM DUAL
+	</select>
+	
+	<!-- 영화 예매 부분 -->
+	
+	<select id="selectTheater" resultMap="theaterResult">
+		select * from theater where name = #{name}
+	</select>
+	
+	<select id="listTheater" resultMap="theaterResult">
+		select * from theater
+	</select>
+	
+	<select id="getAuditorium" resultMap="adtResult">
+		select * from auditorium
+		where ID = #{id}
+	</select>
+
+	<select id="getListAuditorium" resultMap="adtResult">
+		select * from AUDITORIUM order by id
+	</select>
+
+	<select id="getSeat" parameterType="SeatVO"  resultMap="seatResult">
+		select * from SEAT where AUDITORIUM_ID = #{id}
+	</select>
+
+	<select id="getTheaterAdt" resultMap="adtResult">
+		select * from AUDITORIUM where THEATER_ID = (select id from
+		theater where name = #{name})
+	</select>
+
+	<select id="getTicketSeat" resultMap="seatResult">
+		select * from seat where id in (select SEAT_ID from ticket where schedule_id = ${id}) and AUDITORIUM_id = #{auditoriumId}
+	</select>
+
+	<select id="TicketSeatID" resultType="java.lang.Integer">
+		select id from seat where name = #{name} and AUDITORIUM_ID = #{auditoriumID}
+	</select>
+	<insert id="insertSeat">
+		insert into seat values(#{id},#{name},#{auditoriumId},#{locX},#{locY})
+	</insert>
+
+</mapper>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MovieDAO">
+	
+	<resultMap type="MovieVO" id="movieResult">
+		<id property="id" column="ID"/>
+		<result property="title" column="TITLE"/>
+		<result property="type" column="TYPE"/>
+		<result property="singlePlot" column="SINGLEPLOT"/>
+		<result property="age" column="AGE"/>
+		<result property="openingDay" column="OPENING_DAY"/>
+		<result property="director" column="DIRECTOR"/>
+		<result property="actor" column="ACTOR"/>
+		<result property="content" column="CONTENT"/>
+		<result property="time" column="TIME"/>
+	<result property="audience" column="AUDIENCE" />
+	</resultMap>
+
+	<resultMap type="MovieVO" id="audienceResult">
+		<result property="audience" column="AUDIENCE" />
+	</resultMap>
+
+	<resultMap type="UploadFileVO" id="fileResult">
+		<id property="filenum" column="FILENUM"/>
+		<result property="oname" column="ONAME"/>
+		<result property="filename" column="FILENAME"/>
+		<result property="title" column="MOVIE_TITLE"/>
+		<result property="mId" column = "MOVIE_ID"/>
+	</resultMap>
+	<!-- 시퀀스  -->
+	<select id="getNextSeqMovieID" resultType="java.lang.Integer">
+		select MOVIE_ID_SEQ.nextval from dual 
+	</select>
+	
+	<select id="getNextSeqFileID" resultType="java.lang.Integer">
+		select MOVIE_FILE_ID_SEQ.nextval from dual
+	</select>
+	
+	<!-- 영화 예약 부분 -->
+	<insert id="insertMovie">
+		insert into movie(ID,TITLE, TYPE, AGE, OPENING_DAY, DIRECTOR, ACTOR, CONTENT,TIME,SINGLEPLOT)
+		values(#{id},#{title},
+		#{type},#{age},#{openingDay} ,#{director},#{actor}, #{content},#{time},#{singlePlot})
+	</insert>
+
+	<insert id="fileUpload">
+		insert into movie_file(FILENUM, FILENAME, ONAME, MOVIE_ID, MOVIE_TITLE)
+		VALUES (#{ID},#{newFileName}, #{oname},#{MID}, #{title})
+	</insert>
+
+	<select id="searchMovie" resultMap="movieResult">
+		select * from movie
+		where 1 = 1
+		and TITLE like '%'||#{searchKeyword}||'%'
+	</select>
+	
+	<delete id="deleteFile">
+		delete from movie_file where TITLE = #{title}
+	</delete>
+	
+	<delete id="deleteMovie">
+		delete from movie where TITLE = #{title}
+	</delete>
+	
+	<select id="getMovieList" resultMap="movieResult">
+	select * from movie order by OPENING_DAY asc
+	</select>
+	
+	<select id="getMovie" resultMap="movieResult">
+	select * from movie where TITLE = #{title}
+	</select>
+	
+	<select id="getMovieImage" resultMap="fileResult">
+	
+	SELECT * FROM movie_file 
+	where MOVIE_ID = #{id} and 
+    FILENUM  != (SELECT MIN(FILENUM) FROM  (SELECT * FROM movie_file WHERE MOVIE_ID = #{id})) ORDER BY filenum
+	</select>
+	
+	<select id="getMovieTitle" resultMap="fileResult">
+	select * from movie_file 
+	where FILENUM = (select min(FILENUM) from  (select * from movie_file where MOVIE_TITLE = #{title})) order by filenum
+	</select>
+	
+	<select id="getOpeningMovie" resultMap="movieResult">
+		<![CDATA[
+			select * from movie  where opening_day < sysdate order by OPENING_DAY asc
+		]]>
+	</select>
+	<select id="getNotOpeningMovie" resultMap="movieResult">
+		<![CDATA[
+			select * from movie  where opening_day >= sysdate order by OPENING_DAY asc
+		]]>
+	</select>
+	
+	<select id="getMovieSlide" resultMap="movieResult">
+	<![CDATA[
+		select * from movie where rownum <= 3 and OPENING_DAY > SYSDATE order by OPENING_DAY asc , ID asc
+	]]>
+	</select>
+	
+	<select id="getMovieSlideImage" parameterType="MovieVO" resultMap="fileResult">
+		select * from movie_file where MOVIE_ID = #{id} and rownum = 1 order by filenum asc
+	</select>
+
+	<!-- adminPage 월 별 매출표 -->
+	<select id="getAudience" resultType="movieVO">
+
+		SELECT SUM(audience*100)
+		AUDIENCE FROM MOVIE
+		WHERE
+		TO_CHAR(OPENING_DAY, 'YYYY') =
+		TO_CHAR(TO_DATE(#{selectYear}), 'YYYY')
+		GROUP BY TO_CHAR(OPENING_DAY,
+		'MM')
+		ORDER BY TO_CHAR(OPENING_DAY, 'MM')
+
+<!-- 		SELECT SUM(T.LASTPRICE) audience FROM TICKET T -->
+<!--         WHERE -->
+<!-- 		TO_CHAR(B.DAY, 'YYYY') = TO_CHAR(TO_DATE('20170101'), 'YYYY') -->
+<!-- 		GROUP BY TO_CHAR(B.DAY, 'MM') -->
+<!-- 		ORDER BY TO_CHAR(TO_DATE('20170101'), 'MM') -->
+
+
+	</select>
+	
+</mapper>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script language="JavaScript">
+	function openNewWindow(window) { 
+		open (window,"Mail","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, width=1000, height=800"); 
+		}
+		</script>
+<style type="text/css">
+*{
+   margin:0;
+   padding:0;
+   list-style:none;
+   text-decoration:none;
+   color:#9ab1bc;
+}
+body{
+   background-color:#000;
+}
+
+h1,
+ul{
+   text-align:center;
+}
+ul li{
+   display:inline-block;
+   margin-right:70px;
+}
+
+ul li:last-child {
+margin-right:0;
+}
+nav {
+   margin-top:20px;
+   padding: 10px 0;
+   border-top: 1px solid #969696;
+   border-bottom: 1px solid #969696;
+}
+
+content {
+   background-color:#f4f6f7;
+   float:left;
+   width:100%;
+   height:900px;
+}
+footer{
+      text-align:center;
+      padding:10px;
+   }
+p { margin-top:20px;
+text-align:center;
+}
+
+</style>
+</head>
+<body>
+<table>
+<header>
+   <a href="login.html" id="login"><h3>로그인</a>
+   <a href="register.html" id="register">회원가입</a><br>
+   <center><a href="home.html" id="login">홈화면</h3></a></center>
+   <a href="index.jsp" id="login"><h3><strong>관리자와 채팅하기</strong></h3></a>   
+   <h1>영화관 예매 사이트</h1>
+</header>
+<nav>
+   <ul>
+   <li><a href="notshowing.html">개봉예정영화</a></li>
+   <li><a href="showing.html">개봉중인영화</a></li>
+   <li><a href="#">게시판(Q&A)</a></li>
+   <li><a href="#">무제</a></li>
+   </ul>
+</nav>
+<br>
+<content>
+   <center>
+   <form method="post" action="검색.jsp">
+   <input type=text  style="WIDTH: 200pt; HEIGHT: 30pt" placeholder="검색어 입력">
+   <input type=submit name="submit" style="width:60pt;height:30pt;" value="검색">
+   </form>
+   </center>
+   <aside>
+   <br><center>
+  <a href="javascript:openNewWindow('maze.html')"><img src="./movieposter/maze.jpg" width="300" height="380" alt="메이즈러너사진 엑박"></a>
+  <a href="javascript:openNewWindow('1987.html')"> <img src="./movieposter/1987.jpg" width="300" height="380" alt="1987엑박"></a>
+  <a href="javascript:openNewWindow('avatar.html')"> <img src="./movieposter/avatar.jpg" width="300" height="380" alt="아바타 엑박"></a>
+  <a href="javascript:openNewWindow('my world.html')"> <img src="./movieposter/내 세상.jpg" width="300" height="380" alt="내세상 엑박"></a>
+  <a href="javascript:openNewWindow('Commuter.html')"> <img src="./movieposter/커뮤터.jpg" width="300" height="380" alt="커뮤터 엑박"></a>
+  <a href="javascript:openNewWindow('Tongue.html')"> <img src="./movieposter/염력.jpg" width="300" height="380" alt="염력 엑박"></a>
+  <a href="javascript:openNewWindow('WithGod.html')"> <img src="./movieposter/신과함께.jpg" width="300" height="380" alt="신과함께 엑박"></a>
+  <a href="javascript:openNewWindow('InsideDiers.html')"> <img src="./movieposter/인시디어스.jpg" width="300" height="380" alt="인시디어스 엑박"></a>
+   </aside>
+   </center>
+   <br>
+</content>
+<footer>
+   <h3> copyright (c) 2018 미래능력개발교육원</h3>
+</footer>
+</table>
+</body>
+</html>

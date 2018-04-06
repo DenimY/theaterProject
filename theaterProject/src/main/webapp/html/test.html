@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function() {
+	  var inWrap = $('.inner-wrapper');
+	  $('.prev').on('click', function() {
+	    inWrap.animate({left: '0%'}, 300, function(){
+	      inWrap.css('left', '-100%');
+	      $('.slide').first().before($('.slide').last());
+	    });
+	  });
+	  $('.next').on('click', function() {
+	    inWrap.animate({left: '-200%'}, 300, function(){
+	      inWrap.css('left', '-100%');
+	      $('.slide').last().after($('.slide').first());
+	    });
+	  });
+	})
+</script>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+::-moz-selection {
+  background: transparent;
+}
+::selection {
+  background: transparent;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  height: 94vh;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 30px 0;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+.slider-wrapper {
+  width: 600px;
+  height: 300px;
+  overflow: hidden;
+}
+.inner-wrapper {
+  width: 500%;
+  height: 100%;
+  position: relative;
+  left: -100%;
+
+}
+.slide {
+  width: calc(100% / 5);
+  height: 100%;
+  float: left;
+  font-size: 100px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  width: 30px;
+  height: 30px;
+  border-top: 2px solid black;
+  position: absolute;
+  cursor: pointer;
+}
+.prev {
+  border-left: 2px solid black;
+  left: 10%;
+  transform: rotate(-45deg);
+}
+.next {
+  border-right: 2px solid black;
+  right: 10%;
+  transform: rotate(45deg);
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="slider-wrapper">
+      <div class="inner-wrapper">
+        <div class="slide"><img src="./메이즈스틸컷/maze1.jpg"></div>
+        <div class="slide"><img src="./메이즈스틸컷/maze2.jpg"></div>
+        <div class="slide"><img src="./메이즈스틸컷/maze3.jpg"></div>
+        <div class="slide"><img src="./메이즈스틸컷/maze4.jpg"></div>
+        <div class="slide"><img src="./메이즈스틸컷/maze5.jpg"></div>
+        <div class="slide"><img src="./메이즈스틸컷/maze6.jpg"></div>
+        <div class="slide"><img src="./메이즈스틸컷/maze7.jpg"></div>
+      </div>
+    </div>
+    <div class="button prev"></div>
+    <div class="button next"></div>
+  </div>
+</body>
+</html>
