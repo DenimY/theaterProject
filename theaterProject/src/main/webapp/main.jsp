@@ -42,7 +42,7 @@
 			<div class="carousel-item" style="background-image: url('${pageContext.request.contextPath}/image/${slide.title}/${movie_slideImage[status.index].filename}')">         
          </c:if>
          
-         
+        
             <div class="carousel-caption d-none d-md-block">
               <h3>${slide.title}</h3>
               <p>${slide.singlePlot}</p>
