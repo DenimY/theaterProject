@@ -59,21 +59,16 @@ var mainGraph;
 // 			})
 // 	});
 	$(document).ready(function() {
+		alert('start dashbaord.do');
 			$.ajax({
 				type : "GET",
-				url : "Chart.do",
-				dataType : "JSON",
-				data : {
-					"year" : 2017
-				},
+				url : "adminDashBoard.do",
+				dataType : "HTML",
 				error : function() {
 					alert('통신실패!!');
 				},
 				success : function(data) {
-				mainGraph ={audienceList : data }
-				audienceList = data;
-				console.log("audienceList : " + audienceList);
-				$('#myAreaChart').load('chartUpdate.do')					
+				$('#adminMainBody').html(data);
 				}
 			})
 	}); 
@@ -83,7 +78,7 @@ var mainGraph;
 		
 		$('.bt_up').click(
 				function() {
-					var n = $('.bu_up').index(this);
+					var n = $('.bt_up').index(this);
 					var selectYear = $(".selectYear:eq(" + n + ")").val();
 					selectYear = $(".selectYear:eq(" + n + ")").val(
 							selectYear * 1 + 1);

@@ -226,24 +226,24 @@ public class MovieController {
 		
 	}
 	
-	@RequestMapping(value = "/adminMenu.do", method = RequestMethod.GET)
-	public String adminMenu(@RequestParam("menuType") String type) {
-		System.out.println("(START)charts in, type " + type);
-		if(type.equals("dashBoard")) {
-			return "adminPage.do"; 
-		}else if(type.equals("charts")) {
-			return "adminCharts.jsp";
-		}
-		else if(type.equals("userInfo")) {
-			return "userInfotables.do";
-		}else if(type.equals("movieRegistration")) {
-			return "insertMovie.jsp";
-		}
-		else{
-			System.out.println("[ERROR] Menu type is wrong, type is : " + type);
-			return null; 
-		}
-	}
+//	@RequestMapping(value = "/adminMenu.do", method = RequestMethod.GET)
+//	public String adminMenu(@RequestParam("menuType") String type) {
+//		System.out.println("(START)charts in, type " + type);
+//		if(type.equals("dashBoard")) {
+//			return "adminPage.do"; 
+//		}else if(type.equals("charts")) {
+//			return "adminCharts.jsp";
+//		}
+//		else if(type.equals("userInfo")) {
+//			return "userInfotables.do";
+//		}else if(type.equals("movieRegistration")) {
+//			return "insertMovie.jsp";
+//		}
+//		else{
+//			System.out.println("[ERROR] Menu type is wrong, type is : " + type);
+//			return null; 
+//		}
+//	}
 	
 		
 	@RequestMapping(value = "/movieRegistration.do", method = RequestMethod.GET)

@@ -47,16 +47,17 @@ public class AdministratorController {
 	// 최초 창 페이지 
 	@RequestMapping(value = "/adminDashBoard.do", method = RequestMethod.GET)
 	public String adminDashBoard(MovieVO mvo, UsersVO uvo, Model model) {
+		System.out.println("(START) adminDashBoard.do In");
 		Calendar cal = Calendar.getInstance(); 
 		
-		SimpleDateFormat df = new SimpleDateFormat("YYYYMMDD");
-		System.out.println(df.format(cal.getTime()));
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		int thisYear = Integer.parseInt(df.format(cal.getTime()));
 		
 		mvo.setSelectYear(thisYear);
 		model.addAttribute("audience", movieService.getAudience(mvo)); 
 		model.addAttribute("selectYear", cal.get(Calendar.YEAR));
 		model.addAttribute("users", usersService.usersList(uvo));
+		System.out.println("(START) adminDashBoard.do END");
 
 		return "adminDashBoard.jsp";
 	}
