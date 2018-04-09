@@ -73,9 +73,9 @@
 							System.out.println("ErrorCheck1 " + ((int) request.getAttribute("selectYear")));
 						%>
 
-						<input type="button" value="left" class="bt_down"> <input
-							type="text" value="<%=selectYear%>" class="selectYear"> <input
-							type="button" value="right" class="bt_up">
+						<input type="button" value="◀" class="bt_down" onClick="ChartbuttonClicked('left')"> <input
+							type="text" value="<%=selectYear%>" class="selectYear" style = "text-align:center" readonly> <input
+							type="button" value="▶" class="bt_up" onClick="ChartbuttonClicked('right')">
 						<%
 							selectYear = ((int) request.getAttribute("selectYear"));
 							System.out.println("get selectYear : " + selectYear);
@@ -97,6 +97,8 @@
 									audienceList.add(mvo.getAudience());
 
 								}
+								
+								System.out.println("ErrorCheck3 " + audienceList);
 							}
 						%>
 						<script type="text/javascript">
@@ -104,8 +106,13 @@
 							audienceList =
 						<%=audienceList%>
 							;
+							console.log('dashBoard audienceList = ' + audienceList);
 						</script>
-						<canvas id="myAreaChart" width="100%" height="30"></canvas>
+						<div id="myAreaChart" >
+						<canvas width="100%" height="30">
+						</canvas>
+						<script src="resources/js/sb-admin-charts.js"></script>
+						</div> 
 					</div>
 					<div class="card-footer small text-muted">Updated yesterday
 						at 11:59 PM ${sessionScope.users.score}</div>
@@ -569,7 +576,7 @@
 	<script src="resources/js/sb-admin.min.js"></script>
 	<!-- Custom scripts for this page-->
 	<script src="resources/js/sb-admin-datatables.min.js"></script>
-	<script src="resources/js/sb-admin-charts.js"></script>
+	
 </body>
 
 </html>

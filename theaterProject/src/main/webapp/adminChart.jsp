@@ -39,13 +39,27 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 	<script type="text/javascript">
-		console.log("adminchart");
-	</script>
-	<div class="card-body" id="chartcheckTest">
+		
 		</script>
+		
+		<% ArrayList audienceList = new ArrayList(); 
+		
+		for (MovieVO mvo : (List<MovieVO>) request.getAttribute("audience")) {
+			audienceList.add(mvo.getAudience());
+
+		} %>
+
+		<script type="text/javascript">
+// 		var audienceList = new Array();
+		audienceList =
+	<%=audienceList%>
+		;
+	</script>
+		
+	
+	<div class="card-body">
 		<canvas id="myAreaChart" width="100%" height="30"></canvas>
 		<script src="resources/js/sb-admin-charts.js"></script>
-
 	</div>
 
 	<!-- 	</div> -->
