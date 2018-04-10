@@ -21,143 +21,135 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
 <!-- <script src="resources/js/sb-admin.js" type="text/javascript"></script> -->
-<!-- <script src="js/jquery.dataTables.js" type="text/javascript"></script> -->
+<script src="resources/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript">
 
-function adminMenu(Type){
+audienceList = null; 
+	function adminMenu(Type) {
 		var menuType = Type;
 		$.ajax({
-			type: 'GET',
+			type : 'POST',
 			url : 'adminMenu.do',
 			dataType : 'html',
-			data : {'menuType' : menuType},
-			error : function(){alert('Admin Menu error type :' + menuType)},
-			success : function(data){
-				$('#adminMainBody').html(data); 
-				}
-			});
-		}
+			data : {
+				'menuType' : menuType
+			},
+			error : function() {
+				alert('Admin Menu error type :' + menuType)
+			},
+			success : function(data) {
+				$('#adminMainBody').html(data);
+			}
+		});
+	}
+
+	$(document).ready(function() {
+		$.ajax({
+			type : "GET",
+			url : "adminDashBoard.do",
+			dataType : "HTML",
+			error : function() {
+				alert('통신실패!!');
+				return false; 
+			},
+			success : function(data) {
+				$('#adminMainBody').html(data);
+				return false; 
+			}
+		})
+	});
+	
+
+	function ChartbuttonClicked(distence) {
+// 		var selectYear = $(".selectYear:eq(" + n + ")").val();
 		
-var mainGraph; 
-// 	$(document).ready(function() {
+		if (distence == 'right') {
+			console.log('ChartbuttonClicked right');
+
+			var n = $('.bt_up').index(this);
+			
+			var selectYear = $(".selectYear:eq(" + n + ")").val();
+			selectYear = $(".selectYear:eq(" + n + ")").val(
+					selectYear * 1 + 1);
+
 // 			$.ajax({
 // 				type : "GET",
+// 				dataType : "HTML",
 // 				url : "chartCheck.do",
-// 				dataType : "JSON",
 // 				data : {
-// 					"year" : 2017
+// 					"year" : $(".selectYear").val()
 // 				},
 // 				error : function() {
 // 					alert('통신실패!!');
+// 					return false; 
 // 				},
-// 				success : function(data) {
-// 				mainGraph ={audienceList : data }
-// 				audienceList = data;
-// 				console.log("audienceList : " + audienceList);
-// 				$('#myAreaChart').load('chartUpdate.do')					
+// 				success : function(data, audienceList) {
+					
+// 					$('#MonthareaChart').html(data);
+// 					return false; 
 // 				}
-// 			})
-// 	});
-	$(document).ready(function() {
-		alert('start dashbaord.do');
-			$.ajax({
-				type : "GET",
-				url : "adminDashBoard.do",
-				dataType : "HTML",
-				error : function() {
-					alert('통신실패!!');
-				},
-				success : function(data) {
-				$('#adminMainBody').html(data);
-				}
-			})
-	}); 
+// 			});
+
+// 			$('#MonthAreaChart').load(adminChart.jsp);
+
+		} else if (distence == 'left') {
+			console.log('ChartbuttonClicked left');
+
+			var n = $('.bt_down').index(this);
+			var selectYear = $(".selectYear:eq(" + n + ")").val();
+			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 - 1);
+
+// 			$.ajax({
+// 				type : "GET",
+// 				dataType : "HTML",
+// 				url : "chartCheck.do",
+// 				data : {
+// 					"year" : $(".selectYear").val()
+// 				},
+// 				error : function() {
+// 					alert('통신실패!!');
+// 					return false; 
+// 				},
+// 				success : function(data, audienceList) {
+// 					$('#MonthareaChart').load(data);
+// // 					$('#myAreaChart').html(data);
+// 					return false; 
+// 				} 
+// 			});
+
+		}
+		else {
+			alert('(ERROR) ChartbuttonClicked distence data : ' + distence);
+			return false; 
+			} 
 
 
-	$(function() {
+		$.ajax({
+			type : "GET",
+			dataType : "JSON",
+			url : "chartCheck.do",
+			data : {
+				"year" : $(".selectYear").val()
+			},
+			error : function() {
+				alert('통신실패!!');
+				return false; 
+			},
+			success : function(data) {
+				audienceList = data; 
+				ajaxAfter(); 
+				return false; 
+
+			
+			} 
+		});
 		
-		$('.bt_up').click(
-				function() {
-					var n = $('.bt_up').index(this);
-					var selectYear = $(".selectYear:eq(" + n + ")").val();
-					selectYear = $(".selectYear:eq(" + n + ")").val(
-							selectYear * 1 + 1);
-
-// 					$('#chartcheckTest').load('adminPage.do')
-
-					$.ajax({
-						type : "GET",
-						dataType : "JSON",
-						url : "chartCheck.do",
-						data : { 
-							"year" : $(".selectYear").val()
-						},
-						error : function() {
-							alert('통신실패!!');
-						},
-						success : function(data) {
-							audienceList = data; 
-							myLineChart.update(); 
-							$('#myAreaChart').load('chartUpdate.do');
-						}
-					});
-				});
-		$('.bt_down').click(
-				function() {
-					var n = $('.bt_down').index(this);
-					var selectYear = $(".selectYear:eq(" + n + ")").val();
-					selectYear = $(".selectYear:eq(" + n + ")").val(
-							selectYear * 1 - 1);
-// 					$('#chartcheckTest').load('adminPage.do')
-
-					$.ajax({
-						type : "GET",
-						dataType : "JSON",
-						url : "chartCheck.do",
-						data : { 
-							"year" : $(".selectYear").val()
-						},
-						error : function() {
-							alert('통신실패!!');
-						},
-						success : function(data) {
-// 							$('#chartcheckTest').load('adminPage.do');
-// 							$('#chartcheckTest').load('adminPage.do').find('#chartcheckTest');
-							
-// 							$('</div>').html(data).find('#chartcheckTest');
-// 							$('#chartcheckTest').load(data);
-// 							$('#chartcheckTest').load(data);
-// 							console.log(data); 
-// 							console.log("audience List JSON : "
-// 									+ JSON.stringify(data));
-
-//   						$('chartcheckTest').html(data);
-							console.log('refreshTest');
-							// 							$('<div />').jsp(data).find('#chartcheckTest')
-							mainGraph = {
-							Element : 'chartcheckTest', 
-							audienceList : data,
-							data : data 
-							}
-							audienceList = data; 
-							myLineChart.update(); 
-							console.log("audienceList : " + audienceList);
-							$('#myAreaChart').load('chartUpdate.do');
-						}
-						
-					});
-				});
-// 		setInterval(function() {Update(mainGraph) }, 1000);
-	});
-
-	function Update(mainGraph) {
-        $.getJSON('Test/RealTimeData',
-        function (results) {           
-            mainGraph.setData(results);
-        });
-    }
-
- 
+// 		audienceList = request
+	}
+	function ajaxAfter(){
+		console.log("ChartbuttonClicked audienceList : " + audienceList);
+			$('#monthAreaChart').load('adminChart.jsp');
+		}
 </script>
 
 
@@ -173,6 +165,7 @@ var mainGraph;
 	rel="stylesheet">
 <!-- Custom styles for this template-->
 <link href="resources/css/sb-admin.css" rel="stylesheet">
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -180,9 +173,7 @@ var mainGraph;
 	<!-- Navigation-->
 	<div class="content-wrapper">
 		<div id='adminMainBody'>
-			<div class="container-fluid">
-			AdminPage ajax
-			</div>
+			<div class="container-fluid">AdminPage ajax</div>
 		</div>
 		<!-- /.container-fluid-->
 		<!-- /.content-wrapper-->
@@ -220,21 +211,23 @@ var mainGraph;
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- Bootstrap core JavaScript-->
-	<script src="resources/vendor/jquery/jquery.min.js"></script>
-	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Bootstrap core JavaScript-->
+<!-- 	<script src="resources/vendor/jquery/jquery.js"></script> -->
+<!-- 	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.js"></script> -->
 	<!-- Core plugin JavaScript-->
-	<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- 	<script src="resources/vendor/jquery-easing/jquery.easing.js"></script> -->
 	<!-- Page level plugin JavaScript-->
-	<script src="resources/vendor/chart.js/Chart.min.js"></script>
-	<script src="resources/vendor/datatables/jquery.dataTables.js"></script>
-	<script src="resources/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- 	<script src="resources/vendor/chart.js/Chart.js"></script> -->
+<!-- 	<script src="resources/vendor/datatables/jquery.dataTables.js"></script> -->
+<!-- 	<script src="resources/vendor/datatables/dataTables.bootstrap4.js"></script> -->
 	<!-- Custom scripts for all pages-->
-	<script src="resources/js/sb-admin.min.js"></script>
+<!-- 	<script src="resources/js/sb-admin.js"></script> -->
 	<!-- Custom scripts for this page-->
-	<script src="resources/js/sb-admin-datatables.min.js"></script>
-	<script src="resources/js/sb-admin-charts.js"></script>
+<!-- 	<script src="resources/js/sb-admin-datatables.js"></script> -->
+<!-- 	<script src="resources/js/sb-admin-charts.js"></script> -->
+<!-- 	<script src="resources/js/sb-admin-charts.js"></script> -->
+	</div>
+	
 </body>
 
 </html>

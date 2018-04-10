@@ -190,60 +190,6 @@ public class MovieController {
 //		System.out.println("adminPage Chart �썑");
 		return "adminCharts.jsp";
 	}
-
-	@RequestMapping(value = "/chartCheck.do", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Integer> chartCheck(MovieVO vo, Model model, UsersVO userVO, @RequestParam("year") int year) {
-		System.out.println("(START) ChartCheck.do");
-		year = (year * 10000) + 101;
-		vo.setSelectYear(year);
-		System.out.println(year);
-		movieService.getAudience(vo);
-		List<Integer> audienceList = new ArrayList<Integer>();
-
-		for (MovieVO mvo : movieService.getAudience(vo)) {
-			audienceList.add(mvo.getAudience());
-		}
-		System.out.println(audienceList);
-		if (audienceList.size() < 12) {
-			for (int i = audienceList.size(); i < 12; i++) {
-				audienceList.add(0);
-			}
-		}
-		System.out.println(audienceList);
-		model.addAttribute("selectYear", vo.getSelectYear());
-		model.addAttribute("audience", movieService.getAudience(vo));
-		model.addAttribute("users", usersService.usersList(userVO));
-		System.out.println("getselectYear : " + vo.getSelectYear());
-		System.out.println("getAudience : " + movieService.getAudience(vo));
-		System.out.println("(END) ChartCheck.do");
-
-		return audienceList;
-	}
-	@RequestMapping(value = "/chartUpdate.do", method = RequestMethod.GET)
-	public String chartUpdate() {
-		return "adminChart.jsp";
-		
-	}
-	
-//	@RequestMapping(value = "/adminMenu.do", method = RequestMethod.GET)
-//	public String adminMenu(@RequestParam("menuType") String type) {
-//		System.out.println("(START)charts in, type " + type);
-//		if(type.equals("dashBoard")) {
-//			return "adminPage.do"; 
-//		}else if(type.equals("charts")) {
-//			return "adminCharts.jsp";
-//		}
-//		else if(type.equals("userInfo")) {
-//			return "userInfotables.do";
-//		}else if(type.equals("movieRegistration")) {
-//			return "insertMovie.jsp";
-//		}
-//		else{
-//			System.out.println("[ERROR] Menu type is wrong, type is : " + type);
-//			return null; 
-//		}
-//	}
 	
 		
 	@RequestMapping(value = "/movieRegistration.do", method = RequestMethod.GET)

@@ -1,7 +1,9 @@
 package theater.member.board.view.users;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import theater.member.board.model.board.BoardService;
 import theater.member.board.model.ticket.MovieService;
@@ -32,7 +35,7 @@ public class AdministratorController {
 		if(type.equals("dashBoard")) {
 			return "adminDashBoard.do"; 
 		}else if(type.equals("charts")) {
-			return "adminCharts.jsp";
+			return "adminChart.jsp";
 		}
 		else if(type.equals("userInfo")) {
 			return "userInfotables.do";
@@ -61,5 +64,77 @@ public class AdministratorController {
 
 		return "adminDashBoard.jsp";
 	}
+	
+//	@RequestMapping(value = "/chartCheck.do", method = RequestMethod.GET)
+//	@ResponseBody
+//	public List<Integer> chartCheck(MovieVO vo, Model model, UsersVO userVO, @RequestParam("year") int year) {
+//		System.out.println("(START) ChartCheck.do");
+//		year = (year * 10000) + 101;
+//		vo.setSelectYear(year);
+//		System.out.println(year);
+//		movieService.getAudience(vo);
+//		List<Integer> audienceList = new ArrayList<Integer>();
+//
+//		for (MovieVO mvo : movieService.getAudience(vo)) {
+//			audienceList.add(mvo.getAudience());
+//		}
+//		System.out.println(audienceList);
+//		if (audienceList.size() < 12) {
+//			for (int i = audienceList.size(); i < 12; i++) {
+//				audienceList.add(0);
+//			}
+//		}
+//		System.out.println(audienceList);
+//		model.addAttribute("selectYear", vo.getSelectYear());
+//		model.addAttribute("audience", movieService.getAudience(vo));
+//		model.addAttribute("users", usersService.usersList(userVO));
+//		System.out.println("getselectYear : " + vo.getSelectYear());
+//		System.out.println("getAudience : " + movieService.getAudience(vo));
+//		System.out.println("(END) ChartCheck.do");
+//
+//		return audienceList;
+////		return "adminChart.jsp?audienceList = " + audienceList ;
+//	}
+	
+	@RequestMapping(value = "/chartCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Integer> chartCheck(MovieVO vo, Model model, @RequestParam("year") int year) {
+		System.out.println("(START) ChartCheck.do");
+		year = (year * 10000) + 101;
+		vo.setSelectYear(year);
+		System.out.println(year);
+		movieService.getAudience(vo);
+		List<Integer> audienceList = new ArrayList<Integer>();
+
+		for (MovieVO mvo : movieService.getAudience(vo)) {
+			audienceList.add(mvo.getAudience());
+		}
+		System.out.println(audienceList);
+		if (audienceList.size() < 12) {
+			for (int i = audienceList.size(); i < 12; i++) {
+				audienceList.add(0);
+			}
+		}
+		System.out.println(audienceList);
+//		model.addAttribute("selectYear", vo.getSelectYear());
+//		model.addAttribute("audience", movieService.getAudience(vo));
+//		model.addAttribute("users", usersService.usersList(userVO));
+		System.out.println("getselectYear : " + vo.getSelectYear());
+		System.out.println("getAudience : " + movieService.getAudience(vo));
+		System.out.println("(END) admin");
+
+		return audienceList;
+	}
+	
+	@RequestMapping(value = "/chartUpdate.do", method = RequestMethod.GET)
+	public String chartUpdate(MovieVO mvo, UsersVO uvo, Model model ) {
+		System.out.println("(START) ChartUpdate.do");
+		model.addAttribute("selectYear", mvo.getSelectYear());
+		model.addAttribute("audience", movieService.getAudience(mvo));
+		model.addAttribute("users", usersService.usersList(uvo));
+
+		return "adminChart.jsp";
+	}
+	
 
 }

@@ -19,36 +19,30 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>SB Admin - Start Bootstrap Template</title>
+<title>CHART</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
 <!-- <script src="resources/js/sb-admin.js" type="text/javascript"></script> -->
 <!-- <script src="js/jquery.dataTables.js" type="text/javascript"></script> -->
 <!-- Bootstrap core CSS-->
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<!-- <link href="resources/vendor/bootstrap/css/bootstrap.min.css" -->
+<!-- 	rel="stylesheet"> -->
 <!-- Custom fonts for this template-->
-<link href="resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+<!-- <link href="resources/vendor/font-awesome/css/font-awesome.min.css" -->
+<!-- 	rel="stylesheet" type="text/css"> -->
 <!-- Page level plugin CSS-->
-<link href="resources/vendor/datatables/dataTables.bootstrap4.css"
-	rel="stylesheet">
+<!-- <link href="resources/vendor/datatables/dataTables.bootstrap4.css" -->
+<!-- 	rel="stylesheet"> -->
 <!-- Custom styles for this template-->
-<link href="resources/css/sb-admin.css" rel="stylesheet">
+<!-- <link href="resources/css/sb-admin.css" rel="stylesheet"> -->
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
-	<script type="text/javascript">
-		console.log("adminchart");
-	</script>
-	<div class="card-body" id="chartcheckTest">
-		</script>
+<body>
+	
+<!-- 	<div class="card-body"> -->
 		<canvas id="myAreaChart" width="100%" height="30"></canvas>
-		<script src="resources/js/sb-admin-charts.js"></script>
-
-	</div>
-
-	<!-- 	</div> -->
+<!-- 	</div> -->
+	<script src="resources/js/sb-admin-charts.js"></script>
 </body>
 
 </html>
