@@ -19,155 +19,119 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>charts</title>
-<!-- Bootstrap core CSS-->
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Custom fonts for this template-->
-<link href="resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<!-- Custom styles for this template-->
-<link href="resources/css/sb-admin.css" rel="stylesheet">
-
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+<!-- Bootstrap core CSS-->
+<!-- <link href="resources/vendor/bootstrap/css/bootstrap.min.css" -->
+<!-- 	rel="stylesheet"> -->
+<!-- Custom fonts for this template-->
+<!-- <link href="resources/vendor/font-awesome/css/font-awesome.min.css" -->
+<!-- 	rel="stylesheet" type="text/css"> -->
+<!-- Custom styles for this template-->
+<!-- <link href="resources/css/sb-admin.css" rel="stylesheet"> -->
+
+<!-- <script type="text/javascript" -->
+<!-- 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script> -->
 <script type="text/javascript">
-var mainGraph; 
-$(document).ready(function() {
-		$.ajax({
-			type : "GET",
-			url : "chartCheck.do",
-			dataType : "JSON",
-			data : {
-				"year" : 2017
-			},
-			error : function() {
-				alert('통신실패!!');
-			},
-			success : function(data) {
-//					console.log("audience List JSON : " + JSON.stringify(data))
-//					$('#chartcheckTest').load('/chartCheck.do');
-			mainGraph ={audienceList : data }
-			audienceList = data;
-			console.log("audienceList : " + audienceList);
-			$('#myAreaChart').load('chartUpdate.do')					
-			}
-		})
-}); 
+// 	$(document).ready(function() {
+// 		$.ajax({
+// 			type : "GET",
+// 			url : "chartCheck.do",
+// 			dataType : "JSON",
+// 			data : {
+// 				"year" : 2017
+// 			},
+// 			error : function() {
+// 				alert('통신실패!!');
+// 			},
+// 			success : function(data) {
+// 				audienceList = data;
+// 			}
+// 		})
+// 	});
 
-$(function() {
-	
-	$('.bt_up').click(
-			function() {
-				var n = $('.bu_up').index(this);
-				var selectYear = $(".selectYear:eq(" + n + ")").val();
-				selectYear = $(".selectYear:eq(" + n + ")").val(
-						selectYear * 1 + 1);
+// 	function ChartbuttonClicked(distence) {
 
-//					$('#chartcheckTest').load('adminPage.do')
+// 		if (distence == 'right') {
+// 			console.log('ChartbuttonClicked right');
 
-				$.ajax({
-					type : "GET",
-					dataType : "JSON",
-					url : "chartCheck.do",
-					data : { 
-						"year" : $(".selectYear").val()
-					},
-					error : function() {
-						alert('통신실패!!');
-					},
-					success : function(data) {
-						audienceList = data; 
-						myLineChart.update(); 
-						$('#myAreaChart').load('chartUpdate.do');
-					}
-				});
-			});
-	$('.bt_down').click(
-			function() {
-				var n = $('.bt_down').index(this);
-				var selectYear = $(".selectYear:eq(" + n + ")").val();
-				selectYear = $(".selectYear:eq(" + n + ")").val(
-						selectYear * 1 - 1);
-//					$('#chartcheckTest').load('adminPage.do')
+// 			var n = $('.bt_up').index(this);
 
-				$.ajax({
-					type : "GET",
-					dataType : "JSON",
-					url : "chartCheck.do",
-					data : { 
-						"year" : $(".selectYear").val()
-					},
-					error : function() {
-						alert('통신실패!!');
-					},
-					success : function(data) {
-//							$('#chartcheckTest').load('adminPage.do');
-//							$('#chartcheckTest').load('adminPage.do').find('#chartcheckTest');
-						
-//							$('</div>').html(data).find('#chartcheckTest');
-//							$('#chartcheckTest').load(data);
-//							$('#chartcheckTest').load(data);
-//							console.log(data); 
-//							console.log("audience List JSON : "
-//									+ JSON.stringify(data));
+// 			var selectYear = $(".selectYear:eq(" + n + ")").val();
+// 			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 + 1);
 
-//						$('chartcheckTest').html(data);
-						console.log('refreshTest');
-						// 							$('<div />').jsp(data).find('#chartcheckTest')
-						mainGraph = {
-						Element : 'chartcheckTest', 
-						audienceList : data,
-						data : data 
-						}
-						audienceList = data; 
-						myLineChart.update(); 
-						console.log("audienceList : " + audienceList);
-						$('#myAreaChart').load('chartUpdate.do');
-					}
-					
-				});
-			});
-//		setInterval(function() {Update(mainGraph) }, 1000);
-});
+// 		} else if (distence == 'left') {
+// 			console.log('ChartbuttonClicked left');
 
+// 			var n = $('.bt_down').index(this);
+// 			var selectYear = $(".selectYear:eq(" + n + ")").val();
+// 			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 - 1);
+
+// 		} else {
+// 			alert('(ERROR) ChartbuttonClicked distence data : ' + distence);
+// 			return false;
+// 		}
+
+// 		$.ajax({
+// 			type : "GET",
+// 			dataType : "JSON",
+// 			url : "chartCheck.do",
+// 			data : {
+// 				"year" : $(".selectYear").val()
+// 			},
+// 			error : function() {
+// 				alert('통신실패!!');
+// 				return false;
+// 			},
+// 			success : function(data) {
+// 				audienceList = data;
+// 				ajaxAfter();
+// 				return false;
+
+// 			}
+// 		});
+
+		//		audienceList = request
+// 	}
 </script>
 
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body>
+
 	<!-- Navigation-->
-	<%@include file="includ/adminNavigation.jsp"%>
-	<div class="content-wrapper">
+	<div id='adminMainBody'>
 		<div class="container-fluid">
 			<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-				<li class="breadcrumb-item active">Charts</li>
+				<li class="breadcrumb-item active">My Dashboard</li>
 			</ol>
+
+			<%
+				int selectYear;
+				if (request.getAttribute("selectYear") == null) {
+					System.out.println("!Error : selectYear = null");
+					System.out.println("!Error : (CHANGE)selectYear = 2017");
+					selectYear = 2017;
+				} else {
+					selectYear = ((int) request.getAttribute("selectYear"));
+					System.out.println("OK : selectYear is not null, SelectYear : " + selectYear);
+				}
+				// 						System.out.println("ErrorCheck1 " + ((int) request.getAttribute("selectYear")));
+
+				request.setAttribute("selectYear", selectYear);
+				System.out.println(request.getAttribute("selectYear"));
+				System.out.println("ErrorCheck1 " + ((int) request.getAttribute("selectYear")));
+			%>
 			<!-- Area Chart Example-->
-			<div class="card mb-3" id="chartcheckTest2">
-				<div class="card-header" >
-					<i class="fa fa-area-chart"></i> 월별 매출 현황
-					<%
-						int selectYear;
-						if (request.getAttribute("selectYear") == null) {
-							System.out.println("!Error : selectYear = null");
-							System.out.println("!Error : (CHANGE)selectYear = 2017");
-							selectYear = 2017;
-						} else {
-							System.out.println("OK : selectYear is not null");
-							selectYear = ((int) request.getAttribute("selectYear") / 10000);
-						}
-						// 						System.out.println("ErrorCheck1 " + ((int) request.getAttribute("selectYear")));
-
-						request.setAttribute("selectYear", selectYear);
-						System.out.println(request.getAttribute("selectYear"));
-						System.out.println("ErrorCheck1 " + ((int) request.getAttribute("selectYear")));
-					%>
-
-					<input type="button" value="left" class="bt_down"> <input
-						type="text" value="<%=selectYear%>" class="selectYear"> <input
-						type="button" value="right" class="bt_up">
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fa fa-area-chart"></i> 월별 매출 현황 <input type="button"
+						value="◀" class="bt_down" onClick="ChartbuttonClicked('left')">
+					<input type="text" value="<%=selectYear%>" class="selectYear"
+						style="text-align: center" readonly> <input type="button"
+						value="▶" class="bt_up" onClick="ChartbuttonClicked('right')">
 					<%
 						selectYear = ((int) request.getAttribute("selectYear"));
 						System.out.println("get selectYear : " + selectYear);
@@ -176,28 +140,45 @@ $(function() {
 					%>
 
 				</div>
-				<div class="card-body" id="chartcheckTest">
-					<%
-						System.out.println("(START JSP) chartcheckTest");
-						ArrayList audienceList = new ArrayList();
-						if (request.getAttribute("selectYear") == null) {
-							System.out.println("Error : selectYear = null");
-						} else {
-							System.out.println("ErrorCheck2 " + (List<MovieVO>) request.getAttribute("audience"));
+				<%
+					System.out.println("(START JSP) chartcheckTest");
+					ArrayList audienceList = new ArrayList();
+					if (request.getAttribute("selectYear") == null) {
+						System.out.println("Error : selectYear = null");
+					} else {
+						System.out.println("ErrorCheck2 " + (List<MovieVO>) request.getAttribute("audience"));
 
-							for (MovieVO mvo : (List<MovieVO>) request.getAttribute("audience")) {
-								audienceList.add(mvo.getAudience());
+						for (MovieVO mvo : (List<MovieVO>) request.getAttribute("audience")) {
+							audienceList.add(mvo.getAudience());
 
-							}
 						}
-					%>
-					<script type="text/javascript">
-						var audienceList = new Array();
-// 						audienceList =
-<%-- 					<%=audienceList%> --%>
-// 						;
-					</script>
-					<canvas id="myAreaChart" width="100%" height="30"></canvas>
+
+						System.out.println("ErrorCheck3 " + audienceList);
+					}
+				%>
+				<script type="text/javascript">
+					var audienceList = new Array();
+					audienceList =
+				<%=audienceList%>
+					;
+					// 						console.log('dashBoard audienceList = ' + audienceList);
+					console
+							.log('dashBoard div end and start = '
+									+ audienceList);
+				</script>
+
+				<div class="card-body" id="monthAreaChart">
+
+
+					<div>
+						<script type="text/javascript">
+							console.log('dashBoard audienceList = '
+									+ audienceList);
+						</script>
+						<canvas width="100%" height="30" id="myAreaChart">
+						</canvas>
+						<!-- 						<script src="resources/js/sb-admin-charts.js"></script> -->
+					</div>
 				</div>
 				<div class="card-footer small text-muted">Updated yesterday at
 					11:59 PM ${sessionScope.users.score}</div>
@@ -210,43 +191,57 @@ $(function() {
 							<i class="fa fa-bar-chart"></i> 지점별 매출 현황
 						</div>
 						<div class="card-body">
-							<canvas id="myBarChart" width="100" height="50"></canvas>
+							<div class="row">
+								<div class="col-sm-8 my-auto">
+									<canvas id="myBarChart" width="100" height="50"></canvas>
+								</div>
+								<!-- 								<div class="col-sm-4 text-center my-auto"> -->
+								<!-- 									<div class="h4 mb-0 text-primary">$34,693</div> -->
+								<!-- 									<div class="small text-muted">YTD Revenue</div> -->
+								<!-- 									<hr> -->
+								<!-- 									<div class="h4 mb-0 text-warning">$18,474</div> -->
+								<!-- 									<div class="small text-muted">YTD Expenses</div> -->
+								<!-- 									<hr> -->
+								<!-- 									<div class="h4 mb-0 text-success">$16,219</div> -->
+								<!-- 									<div class="small text-muted">YTD Margin</div> -->
+								<!-- 								</div> -->
+							</div>
 						</div>
 						<div class="card-footer small text-muted">Updated yesterday
 							at 11:59 PM</div>
 					</div>
+
+					<!-- /Card Columns-->
 				</div>
 				<div class="col-lg-4">
 					<!-- Example Pie Chart Card-->
 					<div class="card mb-3">
 						<div class="card-header">
-							<i class="fa fa-pie-chart"></i> 연령별 매충 현황
+							<i class="fa fa-pie-chart"></i> 연령별 매출 현황
 							<%
 								ArrayList birthDate = new ArrayList();
 								ArrayList ageAvg = new ArrayList();
 								Calendar cal = Calendar.getInstance();
 								// 								java.sql.Date today = new java.sql.Date(new java.util.Date().getYear());
-								System.out.println(request.getAttribute("users"));
-								
-								try{
+								// 									System.out.println(request.getAttribute("users"));
+
+								try {
 									for (UsersVO vo : (List<UsersVO>) request.getAttribute("users")) {
 										birthDate.add(cal.get(Calendar.YEAR) - (((int) vo.getBirthday().getYear()) + 1900));
 										//birthDate.add(vo.getRegisterDate().getYear());
-										System.out.println("birth : " + birthDate);
+										// 											System.out.println("birth : " + birthDate);
 									}
-									
-								}catch(NumberFormatException e){
-									e.printStackTrace(); 
-								}catch(NullPointerException e){
-									e.printStackTrace(); 
+
+								} catch (NumberFormatException e) {
+									e.printStackTrace();
+								} catch (NullPointerException e) {
+									e.printStackTrace();
 								}
-								
-								
-								
+
 								double ten = 0, twenty = 0, thity = 0, forty = 0, fifty = 0, etc = 0;
 								for (int i = 0; i < birthDate.size(); i++) {
 									int age = ((int) birthDate.get(i)) / 10 * 10;
-									System.out.println(age);
+									// 										System.out.println(age);
 									switch (age) {
 										case 10 :
 											ten++;
@@ -268,14 +263,14 @@ $(function() {
 											break;
 									}
 								}
-								System.out.println("etc : " + etc);
+								// 									System.out.println("etc : " + etc);
 								ageAvg.add(ten / birthDate.size() * 100);
 								ageAvg.add(twenty / birthDate.size() * 100);
 								ageAvg.add(thity / birthDate.size() * 100);
 								ageAvg.add(forty / birthDate.size() * 100);
 								ageAvg.add(fifty / birthDate.size() * 100);
 								ageAvg.add(etc / birthDate.size() * 100);
-								System.out.println("ageAvg : " + ageAvg);
+								// 									System.out.println("ageAvg : " + ageAvg);
 							%>
 
 							<script type="text/javascript">
@@ -295,54 +290,56 @@ $(function() {
 				</div>
 			</div>
 		</div>
-		<!-- /.container-fluid-->
-		<!-- /.content-wrapper-->
-		<footer class="sticky-footer">
-			<div class="container">
-				<div class="text-center">
-					<small>Copyright © Your Website 2018</small>
-				</div>
+	</div>
+	<!-- /.container-fluid-->
+	<!-- /.content-wrapper-->
+	<footer class="sticky-footer">
+		<div class="container">
+			<div class="text-center">
+				<small>Copyright Â© Your Website 2018</small>
 			</div>
-		</footer>
-		<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top"> <i
-			class="fa fa-angle-up"></i>
-		</a>
-		<!-- Logout Modal-->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Ready to
-							Leave?</h5>
-						<button class="close" type="button" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">Select "Logout" below if you are
-						ready to end your current session.</div>
-					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button"
-							data-dismiss="modal">Cancel</button>
-						<a class="btn btn-primary" href="login.html">Logout</a>
-					</div>
+		</div>
+	</footer>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fa fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">Ã</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="moiveRegistration.jsp">Logout</a>
 				</div>
 			</div>
 		</div>
-		 <!-- Bootstrap core JavaScript-->
-    <script src="resources/vendor/jquery/jquery.min.js"></script>
-    <script src="resources/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="resources/vendor/jquery-easing/jquery.easing.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="resources/vendor/chart.js/Chartjs"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="resources/js/sb-admin.js"></script>
-    <!-- Custom scripts for this page-->
-    <script src="resources/js/sb-admin-charts.js"></script>
 	</div>
+	<!-- Bootstrap core JavaScript-->
+	<script src="resources/vendor/jquery/jquery.min.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Page level plugin JavaScript-->
+	<script src="resources/vendor/chart.js/Chart.min.js"></script>
+	<script src="resources/vendor/datatables/jquery.dataTables.js"></script>
+	<script src="resources/vendor/datatables/dataTables.bootstrap4.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="resources/js/sb-admin.js"></script>
+	<!-- Custom scripts for this page-->
+	<script src="resources/js/sb-admin-datatables.js"></script>
+	<script src="resources/js/sb-admin-charts.js"></script>
 
 </body>
 

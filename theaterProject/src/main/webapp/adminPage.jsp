@@ -18,19 +18,20 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>SB Admin - Start Bootstrap Template</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
-<!-- <script src="resources/js/sb-admin.js" type="text/javascript"></script> -->
-<script src="resources/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+
+<script src="resources/vendor/jquery/jquery.min.js"></script>
+	
+<script src="resources/js/sb-admin.js" type="text/javascript"></script>
+<!-- <script src="resources/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script> -->
 <script type="text/javascript">
 
 audienceList = null; 
 	function adminMenu(Type) {
 		var menuType = Type;
 		$.ajax({
-			type : 'POST',
+			type : 'GET',
 			url : 'adminMenu.do',
-			dataType : 'html',
+			dataType : 'HTML',
 			data : {
 				'menuType' : menuType
 			},
@@ -71,59 +72,17 @@ audienceList = null;
 			var selectYear = $(".selectYear:eq(" + n + ")").val();
 			selectYear = $(".selectYear:eq(" + n + ")").val(
 					selectYear * 1 + 1);
-
-// 			$.ajax({
-// 				type : "GET",
-// 				dataType : "HTML",
-// 				url : "chartCheck.do",
-// 				data : {
-// 					"year" : $(".selectYear").val()
-// 				},
-// 				error : function() {
-// 					alert('통신실패!!');
-// 					return false; 
-// 				},
-// 				success : function(data, audienceList) {
-					
-// 					$('#MonthareaChart').html(data);
-// 					return false; 
-// 				}
-// 			});
-
-// 			$('#MonthAreaChart').load(adminChart.jsp);
-
 		} else if (distence == 'left') {
 			console.log('ChartbuttonClicked left');
 
 			var n = $('.bt_down').index(this);
 			var selectYear = $(".selectYear:eq(" + n + ")").val();
 			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 - 1);
-
-// 			$.ajax({
-// 				type : "GET",
-// 				dataType : "HTML",
-// 				url : "chartCheck.do",
-// 				data : {
-// 					"year" : $(".selectYear").val()
-// 				},
-// 				error : function() {
-// 					alert('통신실패!!');
-// 					return false; 
-// 				},
-// 				success : function(data, audienceList) {
-// 					$('#MonthareaChart').load(data);
-// // 					$('#myAreaChart').html(data);
-// 					return false; 
-// 				} 
-// 			});
-
 		}
 		else {
 			alert('(ERROR) ChartbuttonClicked distence data : ' + distence);
 			return false; 
 			} 
-
-
 		$.ajax({
 			type : "GET",
 			dataType : "JSON",
@@ -143,13 +102,29 @@ audienceList = null;
 			
 			} 
 		});
-		
-// 		audienceList = request
 	}
 	function ajaxAfter(){
 		console.log("ChartbuttonClicked audienceList : " + audienceList);
 			$('#monthAreaChart').load('adminChart.jsp');
 		}
+
+	function modifyUserInfo(id) {
+		var userid = id;
+		$.ajax({
+			type : "GET",
+			url : "modifyUserInfo.do",
+			dataType : "html",
+			data : {
+				'id' : userid
+			},
+			error : function() {
+				alert('통신실패!!');
+			},
+			success : function(data) {
+				$('#modifyUserInfo').html(data);
+			}
+		})
+	}
 </script>
 
 

@@ -64,7 +64,7 @@
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
 <!-- 						<li><a href="#" onClick="adminMenu('movieRegistration')" >Movie registration</a></li> -->
-						<li><a href="insertMovie.jsp" >Movie registration</a></li>
+						<li><a href="#"  onClick="adminMenu('movieRegistration')">Movie registration</a></li>
 <!-- 						<li><a href="register.html">Registration Page</a></li> -->
 <!-- 						<li><a href="forgot-password.html">Forgot Password Page</a></li> -->
 <!-- 						<li><a href="blank.html">Blank Page</a></li> -->

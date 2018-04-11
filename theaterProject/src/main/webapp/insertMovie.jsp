@@ -11,6 +11,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>삽입</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+
 <!-- Bootstrap core CSS-->
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -22,7 +25,8 @@
 	rel="stylesheet">
 <!-- Custom styles for this template-->
 <link href="resources/css/sb-admin.css" rel="stylesheet">
-<script src="//code.jquery.com/jquery.min.js"></script>
+
+
 <script type="text/javascript">
 attachFile = {
               idx:0,
@@ -56,9 +60,7 @@ attachFile = {
           }
 </script>
 </head>
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
-<%@include file="includ/adminNavigation.jsp"%>
-<div class="content-wrapper" >
+<body>
 	<div class="container-fluid">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -199,19 +201,18 @@ attachFile = {
 		</div>
 	</div>
 			<!-- Bootstrap core JavaScript-->
-		<script src="resources/vendor/jquery/jquery.min.js"></script>
-		<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- 		<script src="resources/vendor/jquery/jquery.min.js"></script> -->
+<!-- 		<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 		<!-- Core plugin JavaScript-->
-		<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- 		<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script> -->
 		<!-- Page level plugin JavaScript-->
-		<script src="resources/vendor/chart.js/Chart.min.js"></script>
-		<script src="resources/vendor/datatables/jquery.dataTables.js"></script>
-		<script src="resources/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- 		<script src="resources/vendor/chart.js/Chart.min.js"></script> -->
+<!-- 		<script src="resources/vendor/datatables/jquery.dataTables.js"></script> -->
+<!-- 		<script src="resources/vendor/datatables/dataTables.bootstrap4.js"></script> -->
 		<!-- Custom scripts for all pages-->
-		<script src="resources/js/sb-admin.min.js"></script>
+<!-- 		<script src="resources/js/sb-admin.min.js"></script> -->
 		<!-- Custom scripts for this page-->
-		<script src="resources/js/sb-admin-datatables.min.js"></script>
-		<script src="resources/js/sb-admin-charts.js"></script>
-		</div>
+<!-- 		<script src="resources/js/sb-admin-datatables.min.js"></script> -->
+<!-- 		<script src="resources/js/sb-admin-charts.js"></script> -->
 </body>
 </html>
