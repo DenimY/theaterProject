@@ -20,8 +20,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>CHART</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+<!-- <script type="text/javascript" -->
+<!-- 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script> -->
 <!-- <script src="resources/js/sb-admin.js" type="text/javascript"></script> -->
 <!-- <script src="js/jquery.dataTables.js" type="text/javascript"></script> -->
 <!-- Bootstrap core CSS-->

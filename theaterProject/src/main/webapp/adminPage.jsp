@@ -21,7 +21,7 @@
 
 <script src="resources/vendor/jquery/jquery.min.js"></script>
 	
-<script src="resources/js/sb-admin.js" type="text/javascript"></script>
+<!-- <script src="resources/js/sb-admin.min.js" type="text/javascript"></script> -->
 <!-- <script src="resources/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script> -->
 <script type="text/javascript">
 
@@ -136,8 +136,8 @@ audienceList = null;
 <link href="resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <!-- Page level plugin CSS-->
-<link href="resources/vendor/datatables/dataTables.bootstrap4.css"
-	rel="stylesheet">
+<!-- <link href="resources/vendor/datatables/dataTables.bootstrap4.css" -->
+<!-- 	rel="stylesheet"> -->
 <!-- Custom styles for this template-->
 <link href="resources/css/sb-admin.css" rel="stylesheet">
 

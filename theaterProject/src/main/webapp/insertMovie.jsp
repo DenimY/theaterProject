@@ -11,8 +11,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>삽입</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+<!-- <script type="text/javascript" -->
+<!-- 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script> -->
 
 <!-- Bootstrap core CSS-->
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css"

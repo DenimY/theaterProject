@@ -30,8 +30,6 @@
 <!-- Custom styles for this template-->
 <!-- <link href="resources/css/sb-admin.css" rel="stylesheet"> -->
 
-<!-- <script type="text/javascript" -->
-<!-- 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script> -->
 <!-- <script src="resources/vendor/datatables/jquery.dataTables.js" -->
 <!-- 	type="text/javascript"></script> -->
 <!-- <script src="resources/js/sb-admin.js" type="text/javascript"></script> -->
