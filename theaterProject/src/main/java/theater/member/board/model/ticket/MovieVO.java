@@ -114,14 +114,4 @@ public class MovieVO {
 	public void setSelectYear(int selectYear) {
 		this.selectYear = selectYear;
 	}
-	
-	@Override
-	public String toString() {
-		return "MovieVO [id=" + id + ", title=" + title + ", type=" + type + ", singlePlot=" + singlePlot
-				+ ", openingDay=" + openingDay + ", director=" + director + ", actor=" + actor + ", content=" + content
-				+ ", age=" + age + ", time=" + time + ", audience=" + audience + ", selectYear=" + selectYear
-				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + "]";
-	}
-	
-	
 }

@@ -59,11 +59,17 @@ public class UsersServiceImpl implements UsersService{
 	public void updateUserphoto(UsersVO vo) {
 		usersDAO.updateUserphoto(vo);
 	}
-	
+
 	@Override
 	public void deleteUser(UsersVO vo) {
-		usersDAO.deleteUser(vo); 
+		
+		usersDAO.deleteUser(vo);
 	}
 
+	@Override
+	public int pwChk(UsersVO vo) {
+		System.out.println("쿼리문실행전");
+		return usersDAO.pwChk(vo);
+	}
 
 }

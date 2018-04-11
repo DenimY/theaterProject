@@ -21,7 +21,9 @@ public interface UsersService {
 		public List<UsersVO> usersList(UsersVO vo);
 
 		public void updateUserphoto(UsersVO vo);
-		
+
 		public void deleteUser(UsersVO vo);
+
+		public int pwChk(UsersVO vo);
 
 }

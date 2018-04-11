@@ -43,7 +43,7 @@
 		%>
 		<center>
 
-			<div class="alert alert-success">
+			<div class="alert alert-dark">
 				<h5>
 					${users.name}님 의 연락처 정보입니다.<br> 회원정보는 개인정보처리방침에 따라 안전하게 보호되며,<br>
 					회원님의 명백한 동의 없이 공개 또는 제 3자에게 제공되지 않습니다.
@@ -56,7 +56,7 @@
 
 		<center>
 			<form action="Myupdate.do" method="post">
-				<div class="alert alert-success">
+				<div class="alert alert-dark">
 					회원정보 수정
 					<table>
 						<tr>
@@ -104,10 +104,25 @@
 			System.out.println("userid" + userId); 
 			if (request.getHeader("REFERER").equals(beforeURL) && vo.getId() != "admin") {
 		%>
-		<input type="button" value="회원탈퇴" onclick="#">
+		<input type="button" value="회원탈퇴" >
 		<%} %>
 			</form>
 		</center>
+		
+		<font size="6" color="gray">회원탈퇴</font>
+
+			<form name="deleteform" method="post" action="deleteUser.do"
+				onsubmit="return checkValue()">
+				<input type="hidden" name="id" id='id' value="${users.id}">
+				<table>
+					
+					<tr>
+						<td>비밀번호</td>
+						<td><input type="password" id='pw' name="pw" maxlength="50"></td>
+					</tr>
+				</table>
+				<input type="submit" value="회원탈퇴" />
+			</form>
 
 	</div>
 	<!-- /.container -->
@@ -123,6 +138,44 @@
 			$("#wrapper").toggleClass("toggled");
 		});
 	</script>
+	
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript">
+        // 비밀번호 미입력시 경고창
+        function checkValue(){
+        	var result = false;
+			$('#pw').val()
+			$('#id').val()
+			
+			$.ajax({
+				type : 'POST',
+				url : 'pwChk.do',
+				data : {
+					"pw" : $('#pw').val(),
+					"id" : $('#id').val()
+				},
+				success : function(data) {
+					if (data == 0) {
+						alert("비밀번호가 틀리셨습니다.");
+						result = false;
+					} else if(data == 1) {
+						result = true;
+					}
+					else {
+						alert("data error data : " + data );
+						result = false; 
+					}
+				}
+			});
+			
+			if(!document.deleteform.pw.value){
+                alert("비밀번호를 입력하지 않았습니다.");
+                result = false;
+            }
+			return result;
+        }
+    </script>
+    
 <%-- 	<%@include file="includ/footer.jsp"%> --%>
 </body>
 </html>

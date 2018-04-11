@@ -60,10 +60,14 @@ public class UsersDAO {
 		
 		mybatis.update("usersDAO.updateUserphoto", vo);
 	}
-	
+
 	public void deleteUser(UsersVO vo) {
+		mybatis.delete("usersDAO.deleteUser", vo);
 		
-		mybatis.update("usersDAO.deleteUser", vo);
+	}
+
+	public int pwChk(UsersVO vo) {
+		return mybatis.selectOne("usersDAO.pwChk", vo);
 	}
 
 }

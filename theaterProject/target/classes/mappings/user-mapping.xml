@@ -32,8 +32,12 @@
 		select count(*) from users where ID = #{id}
 	</select>
 	
+	<!-- 비밀번호확인 -->
+	<select id="pwChk" resultType="integer" >
+	select count(PW) from users where ID=#{id} and PW=#{pw} 
+	</select>
 	<!-- 로그인 -->
-	<select id="login" resultType="usersVO" resultMap="usersResult">
+	<select id="login" resultMap="usersResult">
 		select * from users where
 		ID  = #{id} and PW = #{pw}
 	</select>
