@@ -77,14 +77,9 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					
-					<li calss="nav-item"><a class="nav-link"
+					<li class="nav-item"><a class="nav-link"
 						href="UserMyPageIndex.jsp">${users.name}님 환영합니다.(내 정보 보기)</a></li>
 				</ul>
-				<c:choose>
-				<c:when test="${users.grade=='0'}">
-					<li><a href="adminPage.do" >Admin</a></li>
-				</c:when>
-			</c:choose>
 			</div>
 		</c:if>
 		<!-- 로그인 전 -->

@@ -51,7 +51,7 @@ text-align:center;
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>test</title>
-<%@include file ="includ/navigation.jsp" %>
+<%@include file ="include/navigation.jsp" %>
 </head>
 <!-- Bootstrap core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -105,6 +105,6 @@ text-align:center;
 </content>
 
 <!-- <h1>성공</h1> -->
-<%@include file="includ/footer.jsp"%>
+<%@include file="include/footer.jsp"%>
 </body>
 </html>

@@ -27,7 +27,7 @@
 		});
 	}
 </script>
-<%@include file="includ/navigation.jsp"%>
+<%@include file="include/navigation.jsp"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -76,27 +76,20 @@ color: yellow;
 <body>
 	<div id="wrapper">
 		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li><a href="#" onCLick="myPageUpdate('userInfo')">내 정보 수정</a></li>
-				<li><a href="#" onClick="myPageUpdate('userBoard')">내가 작성한
-						게시글 보기</a></li>
-				<li><a href="UnderConstruction.do">내가 본 영화</a></li>
-				<li><a href="UnderConstruction.do">나의 예매함</a></li>
-				<li><a href="UnderConstruction.do">쿠폰함</a></li>
-				<li><a href="chat.jsp">채팅방</a></li>
-				<li><a href="logout.do">로그아웃</a></li>
-			</ul>
-		</div>
-
-		<!-- Page Content -->
-		<div id="page-content-wrapper">
-			<div class="container-fluid">
-				<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">메뉴
-					열기</a>
-			</div>
-		</div>
-		<!-- /#page-content-wrapper -->
+		
+		<%@include file="include/sideBar.jsp"%>
+<!-- 		<div id="sidebar-wrapper"> -->
+<!-- 			<ul class="sidebar-nav"> -->
+<!-- 				<li><a href="#" onCLick="myPageUpdate('userInfo')">내 정보 수정</a></li> -->
+<!-- 				<li><a href="#" onClick="myPageUpdate('userBoard')">내가 작성한 -->
+<!-- 						게시글 보기</a></li> -->
+<!-- 				<li><a href="UnderConstruction.do">내가 본 영화</a></li> -->
+<!-- 				<li><a href="UnderConstruction.do">나의 예매함</a></li> -->
+<!-- 				<li><a href="UnderConstruction.do">쿠폰함</a></li> -->
+<!-- 				<li><a href="chat.jsp">채팅방</a></li> -->
+<!-- 				<li><a href="logout.do">로그아웃</a></li> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
 
 	</div>
 
@@ -245,5 +238,5 @@ color: yellow;
 			});
 		</script>
 </body>
-<%@include file="includ/footer.jsp"%>
+<%@include file="include/footer.jsp"%>
 </html>

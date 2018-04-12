@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<%@include file ="includ/navigation.jsp" %>
+<%@include file ="include/navigation.jsp" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JAVA THEATER</title>
@@ -181,6 +181,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<%@include file ="includ/footer.jsp" %>
+<%@include file ="include/footer.jsp" %>
   </body>
 </html>

@@ -30,68 +30,6 @@
 
 <!-- <script type="text/javascript" -->
 <!-- 	src="http://code.jquery.com/jquery-3.2.0.min.js"></script> -->
-<script type="text/javascript">
-// 	$(document).ready(function() {
-// 		$.ajax({
-// 			type : "GET",
-// 			url : "chartCheck.do",
-// 			dataType : "JSON",
-// 			data : {
-// 				"year" : 2017
-// 			},
-// 			error : function() {
-// 				alert('통신실패!!');
-// 			},
-// 			success : function(data) {
-// 				audienceList = data;
-// 			}
-// 		})
-// 	});
-
-// 	function ChartbuttonClicked(distence) {
-
-// 		if (distence == 'right') {
-// 			console.log('ChartbuttonClicked right');
-
-// 			var n = $('.bt_up').index(this);
-
-// 			var selectYear = $(".selectYear:eq(" + n + ")").val();
-// 			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 + 1);
-
-// 		} else if (distence == 'left') {
-// 			console.log('ChartbuttonClicked left');
-
-// 			var n = $('.bt_down').index(this);
-// 			var selectYear = $(".selectYear:eq(" + n + ")").val();
-// 			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 - 1);
-
-// 		} else {
-// 			alert('(ERROR) ChartbuttonClicked distence data : ' + distence);
-// 			return false;
-// 		}
-
-// 		$.ajax({
-// 			type : "GET",
-// 			dataType : "JSON",
-// 			url : "chartCheck.do",
-// 			data : {
-// 				"year" : $(".selectYear").val()
-// 			},
-// 			error : function() {
-// 				alert('통신실패!!');
-// 				return false;
-// 			},
-// 			success : function(data) {
-// 				audienceList = data;
-// 				ajaxAfter();
-// 				return false;
-
-// 			}
-// 		});
-
-		//		audienceList = request
-// 	}
-</script>
 
 </head>
 
@@ -103,7 +41,7 @@
 			<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-				<li class="breadcrumb-item active">My Dashboard</li>
+				<li class="breadcrumb-item active">Charts</li>
 			</ol>
 
 			<%

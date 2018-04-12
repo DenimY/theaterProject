@@ -178,7 +178,7 @@ var mainGraph;
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-	<%@include file="includ/adminNavigation.jsp"%>
+	<%@include file="include/adminNavigation.jsp"%>
 	<!-- Navigation-->
 	<div class="content-wrapper">
 		<div id='adminMainBody'>

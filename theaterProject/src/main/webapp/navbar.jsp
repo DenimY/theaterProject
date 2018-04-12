@@ -18,7 +18,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="includ/adminNavigation.jsp"%>
+  <%@include file="include/adminNavigation.jsp"%>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->

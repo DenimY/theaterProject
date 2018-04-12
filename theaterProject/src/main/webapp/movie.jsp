@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- Navigation -->
-	<%@include file ="includ/navigation.jsp" %>
+	<%@include file ="include/navigation.jsp" %>
     <!-- Page Content -->
     <div class="container">
 	
