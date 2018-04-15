@@ -18,6 +18,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>DashBoard</title>
+
 <!-- Bootstrap core CSS-->
 <!-- <link href="resources/vendor/bootstrap/css/bootstrap.min.css" -->
 <!-- 	rel="stylesheet"> -->
@@ -74,13 +75,18 @@
 			<div class="card mb-3">
 				<div class="card-header">
 					<i class="fa fa-area-chart"></i> 월별 매출 현황
-					
 
 					<input type="button" value="◀" class="bt_down"
 						onClick="ChartbuttonClicked('left')"> <input type="text"
 						value="<%=selectYear%>" class="selectYear"
 						style="text-align: center" readonly> <input type="button"
 						value="▶" class="bt_up" onClick="ChartbuttonClicked('right')">
+<!-- 						style= "position :absolute; right:1" -->
+<!-- 						<p align="right"> -->
+						<a href ="#" onClick="outOfData()" class="fa fa-download text-align: right"  style="position: right"></a>
+<!-- 						</p> -->
+						
+						
 					<%
 						selectYear = ((int) request.getAttribute("selectYear"));
 						System.out.println("get selectYear : " + selectYear);

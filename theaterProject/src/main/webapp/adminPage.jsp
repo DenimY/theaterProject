@@ -20,12 +20,11 @@
 <title>SB Admin - Start Bootstrap Template</title>
 
 <script src="resources/vendor/jquery/jquery.min.js"></script>
-	
+
 <!-- <script src="resources/js/sb-admin.min.js" type="text/javascript"></script> -->
 <!-- <script src="resources/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script> -->
 <script type="text/javascript">
-
-audienceList = null; 
+	audienceList = null;
 	function adminMenu(Type) {
 		var menuType = Type;
 		$.ajax({
@@ -51,38 +50,35 @@ audienceList = null;
 			dataType : "HTML",
 			error : function() {
 				alert('통신실패!!');
-				return false; 
+				return false;
 			},
 			success : function(data) {
 				$('#adminMainBody').html(data);
-				return false; 
+				return false;
 			}
 		})
 	});
-	
 
 	function ChartbuttonClicked(distence) {
-// 		var selectYear = $(".selectYear:eq(" + n + ")").val();
-		
+		// 		var selectYear = $(".selectYear:eq(" + n + ")").val();
+
 		if (distence == 'right') {
 			console.log('ChartbuttonClicked right');
 
 			var n = $('.bt_up').index(this);
-			
+
 			var selectYear = $(".selectYear:eq(" + n + ")").val();
-			selectYear = $(".selectYear:eq(" + n + ")").val(
-					selectYear * 1 + 1);
+			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 + 1);
 		} else if (distence == 'left') {
 			console.log('ChartbuttonClicked left');
 
 			var n = $('.bt_down').index(this);
 			var selectYear = $(".selectYear:eq(" + n + ")").val();
 			selectYear = $(".selectYear:eq(" + n + ")").val(selectYear * 1 - 1);
-		}
-		else {
+		} else {
 			alert('(ERROR) ChartbuttonClicked distence data : ' + distence);
-			return false; 
-			} 
+			return false;
+		}
 		$.ajax({
 			type : "GET",
 			dataType : "JSON",
@@ -92,21 +88,20 @@ audienceList = null;
 			},
 			error : function() {
 				alert('통신실패!!');
-				return false; 
+				return false;
 			},
 			success : function(data) {
-				audienceList = data; 
-				ajaxAfter(); 
-				return false; 
+				audienceList = data;
+				ajaxAfter();
+				return false;
 
-			
-			} 
+			}
 		});
 	}
-	function ajaxAfter(){
+	function ajaxAfter() {
 		console.log("ChartbuttonClicked audienceList : " + audienceList);
-			$('#monthAreaChart').load('adminChart.jsp');
-		}
+		$('#monthAreaChart').load('adminChart.jsp');
+	}
 
 	function modifyUserInfo(id) {
 		var userid = id;
@@ -125,6 +120,23 @@ audienceList = null;
 			}
 		})
 	}
+
+	function outOfData() {
+		$.ajax({
+			type : "POST",
+			url : "outOfData.do",
+// 			dataType : "JSON",
+			data : {
+				year : $(".selectYear").val()
+			},
+			error : function() {
+				alert('ajax outOfData conneted error');
+			},
+			success : function(data) {
+				alert("Chart data download success");
+			}
+		})
+	}
 </script>
 
 
@@ -140,6 +152,7 @@ audienceList = null;
 <!-- 	rel="stylesheet"> -->
 <!-- Custom styles for this template-->
 <link href="resources/css/sb-admin.css" rel="stylesheet">
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
 </head>
 
@@ -187,22 +200,22 @@ audienceList = null;
 			</div>
 		</div>
 		<!-- Bootstrap core JavaScript-->
-<!-- 	<script src="resources/vendor/jquery/jquery.js"></script> -->
-<!-- 	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.js"></script> -->
-	<!-- Core plugin JavaScript-->
-<!-- 	<script src="resources/vendor/jquery-easing/jquery.easing.js"></script> -->
-	<!-- Page level plugin JavaScript-->
-<!-- 	<script src="resources/vendor/chart.js/Chart.js"></script> -->
-<!-- 	<script src="resources/vendor/datatables/jquery.dataTables.js"></script> -->
-<!-- 	<script src="resources/vendor/datatables/dataTables.bootstrap4.js"></script> -->
-	<!-- Custom scripts for all pages-->
-<!-- 	<script src="resources/js/sb-admin.js"></script> -->
-	<!-- Custom scripts for this page-->
-<!-- 	<script src="resources/js/sb-admin-datatables.js"></script> -->
-<!-- 	<script src="resources/js/sb-admin-charts.js"></script> -->
-<!-- 	<script src="resources/js/sb-admin-charts.js"></script> -->
+		<!-- 	<script src="resources/vendor/jquery/jquery.js"></script> -->
+		<!-- 	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.js"></script> -->
+		<!-- Core plugin JavaScript-->
+		<!-- 	<script src="resources/vendor/jquery-easing/jquery.easing.js"></script> -->
+		<!-- Page level plugin JavaScript-->
+		<!-- 	<script src="resources/vendor/chart.js/Chart.js"></script> -->
+		<!-- 	<script src="resources/vendor/datatables/jquery.dataTables.js"></script> -->
+		<!-- 	<script src="resources/vendor/datatables/dataTables.bootstrap4.js"></script> -->
+		<!-- Custom scripts for all pages-->
+		<!-- 	<script src="resources/js/sb-admin.js"></script> -->
+		<!-- Custom scripts for this page-->
+		<!-- 	<script src="resources/js/sb-admin-datatables.js"></script> -->
+		<!-- 	<script src="resources/js/sb-admin-charts.js"></script> -->
+		<!-- 	<script src="resources/js/sb-admin-charts.js"></script> -->
 	</div>
-	
+
 </body>
 
 </html>

@@ -34,12 +34,13 @@
 
 	<div class="panel panel-default">
 		<!-- Default panel contents -->
-		<div class="panel-heading">
-			<h2>
-				<a href="main.jsp"><small>JAVA THEATER</small></a>
-			</h2>
-		</div>
-
+		<center>
+			<div class="panel-heading">
+				<h2>
+					<a href="main.jsp"><small>JAVA THEATER</small></a>
+				</h2>
+			</div>
+		</center>
 		<div class="panel-body">
 			<div class="container">
 				<form method="post" action="viewBoard.do?&modify=true">

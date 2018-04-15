@@ -78,18 +78,6 @@ color: yellow;
 		<!-- Sidebar -->
 		
 		<%@include file="include/sideBar.jsp"%>
-<!-- 		<div id="sidebar-wrapper"> -->
-<!-- 			<ul class="sidebar-nav"> -->
-<!-- 				<li><a href="#" onCLick="myPageUpdate('userInfo')">내 정보 수정</a></li> -->
-<!-- 				<li><a href="#" onClick="myPageUpdate('userBoard')">내가 작성한 -->
-<!-- 						게시글 보기</a></li> -->
-<!-- 				<li><a href="UnderConstruction.do">내가 본 영화</a></li> -->
-<!-- 				<li><a href="UnderConstruction.do">나의 예매함</a></li> -->
-<!-- 				<li><a href="UnderConstruction.do">쿠폰함</a></li> -->
-<!-- 				<li><a href="chat.jsp">채팅방</a></li> -->
-<!-- 				<li><a href="logout.do">로그아웃</a></li> -->
-<!-- 			</ul> -->
-<!-- 		</div> -->
 
 	</div>
 
@@ -101,7 +89,7 @@ color: yellow;
 
 		<!-- Introduction Row -->
 		<center>
-			<div id="jb-header">
+			<div id="jb-content-header">
 				<h1 class="my-4">${users.name}님 환영합니다.</h1>
 
 				<!-- Team Members Row -->
@@ -115,14 +103,14 @@ color: yellow;
 
 		<center>
 			<div id="jb-content-header">
-				<div id="jb-content1">
+				<div id="jb-content2">
 				<h3>프로필 사진</h3>
 					<div class="col-lg-4 col-sm-6 text-text-align:left mb-4">
 						<form action="imgUpdate.do" method="post"
 							enctype="multipart/form-data">
 							<input type="hidden" name="id" value="${users.id}">
 							<div class="profile">
-								<img border="0" alt="사진이없쪙!"
+								<img border="0" alt="사진이없쪙!"  
 									src="${pageContext.request.contextPath}/usersphoto/${users.userphoto}"
 									width="70" height="70">
 							</div>
@@ -141,11 +129,11 @@ color: yellow;
 			
 		<center>	
 			<div id="jb-content-header">
-				<div id="jb-content1">
+				<div id="jb-content2">
 					<h3>연락처</h3>
 					<table border="0">
 						<tr>
-							<td>전화번호 </td>
+							<td id="mypagetable">전화번호</td>
 							<td>:${users.tel}</td>
 						</tr>
 
@@ -176,7 +164,7 @@ color: yellow;
 		</center>
 		<center>
 			<div id="jb-content-header">
-				<div id="jb-content1">
+				<div id="jb-content2">
 					<h3>회원등급&점수</h3>
 					<table border="0">
 						<tr>

@@ -9,7 +9,9 @@
 		<result property="name" column="NAME" />
 		<result property="gender" column="GENDER" />
 		<result property="birthday" column="BIRTHDAY" />
+		<result property="postcode" column="POSTCODE" />
 		<result property="address" column="ADDRESS" />
+		<result property="addressdetail" column="ADDRESSDETAIL" />
 		<result property="email" column="EMAIL" />
 		<result property="tel" column="TEL" />
 		<result property="score" column="SCORE" />
@@ -20,11 +22,11 @@
 	<!-- 회원 가입 -->
 	<insert id="insertusers">
 		insert into users(ID, PW, NAME, GENDER,	
-		BIRTHDAY, ADDRESS, EMAIL, TEL)
+		BIRTHDAY, POSTCODE, ADDRESS, ADDRESSDETAIL, EMAIL, TEL)
 		
 		values(#{id}, #{pw}, #{name},
 		#{gender}, #{birthday},
-		#{address}, #{email}, #{tel})
+		#{postcode}, #{address}, #{addressdetail}, #{email}, #{tel})
 	</insert>
 	
 	<!-- 중복확인 -->

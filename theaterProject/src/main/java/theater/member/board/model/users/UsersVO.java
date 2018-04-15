@@ -9,7 +9,9 @@ public class UsersVO {
 	private String name;
 	private String gender;
 	private Date birthday;
+	private String postcode;
 	private String address;
+	private String addressdetail;
 	private String email;
 	private String tel;
 	private int score;
@@ -40,11 +42,29 @@ public class UsersVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getAddressdetail() {
+		return addressdetail;
+	}
+	public void setAddressdetail(String addressdetail) {
+		this.addressdetail = addressdetail;
 	}
 	public String getEmail() {
 		return email;
@@ -70,28 +90,20 @@ public class UsersVO {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-
-	public Date getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-	
-	public String getuserphoto() {
+	public String getUserphoto() {
 		return userphoto;
 	}
-	public void setuserphoto(String userphoto) {
+	public void setUserphoto(String userphoto) {
 		this.userphoto = userphoto;
 	}
 	
 	@Override
 	public String toString() {
 		return "UsersVO [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + ", birthday=" + birthday
-				+ ", address=" + address + ", email=" + email + ", tel=" + tel + ", score=" + score + ", grade=" + grade
-				+ ", userphoto=" + userphoto + "]";
+				+ ", postcode=" + postcode + ", address=" + address + ", addressdetail=" + addressdetail + ", email="
+				+ email + ", tel=" + tel + ", score=" + score + ", grade=" + grade + ", userphoto=" + userphoto + "]";
 	}
-	
+
 	
 	
 }

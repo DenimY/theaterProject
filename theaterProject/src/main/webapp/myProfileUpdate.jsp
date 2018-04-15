@@ -108,11 +108,9 @@
 		<%} %>
 			</form>
 		</center>
-		
+		<div class="alert alert-dark">
 		<font size="6" color="gray">회원탈퇴</font>
-
-			<form name="deleteform" method="post" action="deleteUser.do"
-				onsubmit="return checkValue()">
+			<form id="deleteUser" name="deleteform" method="post" action="deleteUser.do">
 				<input type="hidden" name="id" id='id' value="${users.id}">
 				<table>
 					
@@ -121,9 +119,9 @@
 						<td><input type="password" id='pw' name="pw" maxlength="50"></td>
 					</tr>
 				</table>
-				<input type="submit" value="회원탈퇴" />
+				<input type="button" value="회원탈퇴" onclick="checkValue()"/>
 			</form>
-
+		</div>
 	</div>
 	<!-- /.container -->
 
@@ -143,7 +141,11 @@
 	<script type="text/javascript">
         // 비밀번호 미입력시 경고창
         function checkValue(){
-        	var result = false;
+        	
+        	if(!document.deleteform.pw.value){
+                alert("비밀번호를 입력하지 않았습니다.");
+            }
+        	
 			$('#pw').val()
 			$('#id').val()
 			
@@ -157,22 +159,16 @@
 				success : function(data) {
 					if (data == 0) {
 						alert("비밀번호가 틀리셨습니다.");
-						result = false;
 					} else if(data == 1) {
-						result = true;
+						alert("회원탈퇴를 하겠습니다.");
+						document.getElementById('deleteUser').submit();
 					}
 					else {
 						alert("data error data : " + data );
-						result = false; 
 					}
 				}
 			});
 			
-			if(!document.deleteform.pw.value){
-                alert("비밀번호를 입력하지 않았습니다.");
-                result = false;
-            }
-			return result;
         }
     </script>
     

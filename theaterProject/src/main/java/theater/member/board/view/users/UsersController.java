@@ -21,10 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import theater.member.board.model.board.BoardService;
-import theater.member.board.model.board.BoardVO;
 import theater.member.board.model.users.UsersService;
 import theater.member.board.model.users.UsersVO;
+
 
 @Controller
 public class UsersController {
@@ -60,6 +59,17 @@ public class UsersController {
 	
 	}
 	
+    // 회원탈퇴
+    @RequestMapping("deleteUser.do")
+    public String deleteUser(UsersVO vo, HttpSession session){
+    	System.out.println("삭제진행중");
+    	usersService.deleteUser(vo);
+    	System.out.println("삭제완료");
+    	session.invalidate();        
+    	System.out.println("세션삭제");
+    	return "redirect:home.do";
+    }
+	
 	//로그인
 	@RequestMapping(value="/login.do")
 	public String login(UsersVO vo, HttpSession session) {
@@ -92,15 +102,7 @@ public class UsersController {
         return "myProfileUpdate.jsp";
     }
 	
-    // 회원탈퇴
-    @RequestMapping("deleteUser.do")
-    public String deleteUser(UsersVO vo, HttpSession session){
-    	usersService.deleteUser(vo);
-    	System.out.println("삭제완료");
-    	session.invalidate();        
-    	System.out.println("세션삭제");
-    	return "redirect:home.do";
-    }
+
     
     // 04. 회원 정보 수정 처리
     @RequestMapping("Myupdate.do")
@@ -153,7 +155,7 @@ public class UsersController {
 				
 				mfile.transferTo(serverFile);
 				
-				vo.setuserphoto(saveFileName);
+				vo.setUserphoto(saveFileName);
 				
 				HashMap<String,String> file = new HashMap<>();
 				file.put("origName", origName);

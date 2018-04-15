@@ -9,17 +9,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
+    <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="resources/css/half-slider.css" rel="stylesheet">
+    <link href="resources/css/custom.css" rel="stylesheet">
+    <link href="resources/css/loginmo.css" rel="stylesheet">
 <link href="resources/css/custom.css" rel="stylesheet">
 </head>
 <body>	
+<%@include file ="include/navigation.jsp" %>
 		<div class="col-md-12">
 			<div class="page-header">
-				<center>
-				<h1>
-					<a href="main.jsp"><small>JAVA THEATER</small></a>
-				</h1>
-				</center>
 			</div>
 		</div>
 		<form action="boardList.do" method="post">

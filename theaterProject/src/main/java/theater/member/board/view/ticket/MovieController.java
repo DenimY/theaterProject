@@ -70,10 +70,6 @@ public class MovieController {
       return "main.jsp";
    }
    
-   
-   
-   
-   
    @RequestMapping(value = "/fileUpload.do")
     public String fileUp(@RequestParam(value="checkType", required =false)String[] type,
           @RequestParam(value="time", required=false)int time,
